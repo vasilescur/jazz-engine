@@ -212,42 +212,42 @@ minor_scale(Tonic, Notes) :-
 % or change the adjustment of the third to flat (keeping the major pattern).
 :- record chord(root:note, pattern:list, degrees:list, adjustments:list).
 
-major_chord(Root, Pattern, Chord) :-
+major_chord(Root, Chord) :-
     major_scale_pattern(Pattern),
     Chord = chord{root: Root, pattern: Pattern, degrees: [1, 3, 5], adjustments: [natural, natural, natural]}.
 
-minor_chord(Root, Pattern, Chord) :-
+minor_chord(Root, Chord) :-
     minor_scale_pattern(Pattern),
     Chord = chord{root: Root, pattern: Pattern, degrees: [1, 3, 5], adjustments: [natural, natural, natural]}.
 
 % Equivalent to:                                                                              
-% minor_chord(Root, Pattern, Chord) :-                         |-------- flat 3 = minor ------|
+% minor_chord(Root, Chord) :-                                  |-------- flat 3 = minor ------|
 %     major_scale_pattern(Pattern),     <--- major             v                              v
 %     Chord = chord{root: Root, pattern: Pattern, degrees: [1, 3, 5], adjustments: [natural, flat, natural]}.
 
 % The adjustment pattern here is natural, natural, flat-- even though diminished chords have a flat 3.
 % This is because the pattern is minor and the 3rd is already flat, so the adjustment is natural. 
-diminished_chord(Root, Pattern, Chord) :-
+diminished_chord(Root, Chord) :-
     minor_scale_pattern(Pattern),
     Chord = chord{root: Root, pattern: Pattern, degrees: [1, 3, 5], adjustments: [natural, natural, flat]}.
 
-augmented_chord(Root, Pattern, Chord) :-
+augmented_chord(Root, Chord) :-
     major_scale_pattern(Pattern),
     Chord = chord{root: Root, pattern: Pattern, degrees: [1, 3, 5], adjustments: [natural, natural, sharp]}.
 
-major_minor_major_7_chord(Root, Pattern, Chord) :-
+major_minor_major_7_chord(Root, Chord) :-
     major_scale_pattern(Pattern),
     Chord = chord{root: Root, pattern: Pattern, degrees: [1, 3, 5, 7], adjustments: [natural, natural, natural, natural]}.
 
-sus2_chord(Root, Pattern, Chord) :-
+sus2_chord(Root, Chord) :-
     major_scale_pattern(Pattern),
     Chord = chord{root: Root, pattern: Pattern, degrees: [1, 2, 5], adjustments: [natural, natural, natural]}.
 
-sus4_chord(Root, Pattern, Chord) :-
+sus4_chord(Root, Chord) :-
     major_scale_pattern(Pattern),
     Chord = chord{root: Root, pattern: Pattern, degrees: [1, 4, 5], adjustments: [natural, natural, natural]}.
 
-nine_sus4_chord(Root, Pattern, Chord) :-
+nine_sus4_chord(Root, Chord) :-
     major_scale_pattern(Pattern),                               % Have to use 2 because 9 is out of range-- only 7 scale degrees.
     Chord = chord{root: Root, pattern: Pattern, degrees: [1, 4, 5, 2], adjustments: [natural, natural, natural, natural]}.
 
@@ -275,7 +275,7 @@ chord_progression(Tonic, Pattern, Degrees, Chords) :-
     maplist(\Degree^Chord^(
         nth1(Degree, Pattern, Interval),
         interval(Tonic, Note, Interval),
-        major_chord(Note, Pattern, Chord)
+        major_chord(Note, Chord)
     ), Degrees, Chords).
 
 

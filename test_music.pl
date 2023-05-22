@@ -557,8 +557,7 @@ test(c_major_chord, [nondet]) :-
     mk_note(c, natural, 4, C4),
     mk_note(e, natural, 4, E4),
     mk_note(g, natural, 4, G4),
-    major_scale_pattern(Pattern),
-    major_chord(C4, Pattern, Chord),
+    major_chord(C4, Chord),
     
     assertion(Chord = chord{adjustments: [natural, natural, natural], 
                             degrees: [1, 3, 5], 
@@ -577,8 +576,7 @@ test(d_major_chord, [nondet]) :-
     mk_note(d, natural, 4, D4),
     mk_note(f, sharp, 4, F_sharp_4),
     mk_note(a, natural, 5, A5),
-    major_scale_pattern(Pattern),
-    major_chord(D4, Pattern, Chord),
+    major_chord(D4, Chord),
 
     assertion(Chord = chord{adjustments: [natural, natural, natural], 
                             degrees: [1, 3, 5], 
@@ -597,8 +595,7 @@ test(e_major_chord, [nondet]) :-
     mk_note(e, natural, 4, E4),
     mk_note(g, sharp, 4, G_sharp_4),
     mk_note(b, natural, 5, B5),
-    major_scale_pattern(Pattern),
-    major_chord(E4, Pattern, Chord),
+    major_chord(E4, Chord),
 
     assertion(Chord = chord{adjustments: [natural, natural, natural], 
                             degrees: [1, 3, 5], 
@@ -622,8 +619,7 @@ test(c_minor_chord, [nondet]) :-
     mk_note(c, natural, 4, C4),
     mk_note(d, sharp, 4, D_sharp_4),
     mk_note(g, natural, 4, G4),
-    minor_scale_pattern(Pattern),
-    minor_chord(C4, Pattern, Chord),
+    minor_chord(C4, Chord),
 
     assertion(Chord = chord{adjustments: [natural, natural, natural], 
                             degrees: [1, 3, 5], 
