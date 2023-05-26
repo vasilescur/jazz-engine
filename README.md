@@ -238,7 +238,7 @@ Chords = [
 
 - [x] Notes
 - [x] Enharmonics
-- [ ] Intervals-- Needs debugging (ex. cannot find the SecondNote going down)
+- [x] Intervals-- Needs debugging (ex. cannot find the SecondNote going down)
 - [x] Scales
 - [x] Basic chords
 - [x] Basic chord notes
