@@ -234,6 +234,21 @@ Chords = [
 ].
 ```
 
+## Future Scope / Roadmap
+
+- [x] Notes
+- [x] Enharmonics
+- [ ] Intervals-- Needs debugging (ex. cannot find the SecondNote going down)
+- [x] Scales
+- [x] Basic chords
+- [x] Basic chord notes
+- [ ] Chord inversions
+- [x] Basic chord progressions
+- [ ] Chord progression voicing
+- [ ] 4-part harmony rules
+- [ ] (WIP, commented in source) Guitar fretboard note mapping
+- [ ] Guitar finger schedule rules
+- [ ] Piano finger schedule rules
 
 
 ## Testing
