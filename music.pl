@@ -137,6 +137,26 @@ mk_note_list(Notes) :-
     mk_note_list_octave(7, Octave7),
     append([Octave0, Octave1, Octave2, Octave3, Octave4, Octave5, Octave6, Octave7], Notes).
 
+slice(L, From, To, R):-
+        length(LFrom, From),
+        length([_|LTo], To),
+        append(LTo, _, L),
+        append(LFrom, R, LTo).
+
+mk_note_list_guitar(Notes) :-
+    % Martin DC-45 has 3 octaves and a major 6th of range.
+    % 45 notes beginning with E2.
+    mk_note_list(AllNotes),
+
+    % Find E2
+    nth0(FromIndex, AllNotes, note{name: e, accidental: natural, octave: 2}),
+    ToIndex is FromIndex + 46,
+    slice(AllNotes, FromIndex, ToIndex, Notes).
+is_guitar_playable(Note) :-
+    mk_note_list_guitar(Possible),
+    member(Note, Possible).
+
+
 interval(First, Second, Semitones) :-
     mk_note_list(Notes),
 
@@ -151,6 +171,19 @@ interval(First, Second, Semitones) :-
     !; % Cut because: if already found an interval, eliminate choice point. 
        % If not, check the backwards interval.
     interval(Second, First, Semitones).
+
+
+interval_octave_agnostic(First, Second, Semitones) :- 
+    % Put both notes in the same octave
+    First = note{name: NameFirst, accidental: AccidentalFirst, octave: _},
+    Second = note{name: NameSecond, accidental: AccidentalSecond, octave: _},
+
+    NormFirst = note{name: NameFirst, accidental: AccidentalFirst, octave: 4},
+    NormSecond = note{name: NameSecond, accidental: AccidentalSecond, octave: 4},
+
+    % Call "interval"
+    interval(NormFirst, NormSecond, Semitones).
+
 
 interval_name(0, unison).
 interval_name(1, minor_second).

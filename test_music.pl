@@ -684,3 +684,190 @@ test(c_1_4_6_5) :-
 
 :- end_tests(chord_progressions).
 
+
+:- begin_tests(the_angry_man).
+
+test(top_left_low_e1) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 2}%,
+        % note{name: f, accidental: natural, octave: 4},
+        % note{name: f, accidental: sharp, octave: 4},
+        % note{name: g, accidental: natural, octave: 4},
+        % note{name: g, accidental: sharp, octave: 4},
+        % note{name: d, accidental: natural, octave: 4},
+        % note{name: d, accidental: sharp, octave: 4},
+        % note{name: c, accidental: sharp, octave: 4},
+        % note{name: c, accidental: natural, octave: 4},
+        % note{name: b, accidental: natural, octave: 4},
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e2) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 2},
+        note{name: f, accidental: natural, octave: 3}%,
+        % note{name: f, accidental: sharp, octave: 4},
+        % note{name: g, accidental: natural, octave: 4},
+        % note{name: g, accidental: sharp, octave: 4},
+        % note{name: d, accidental: natural, octave: 4},
+        % note{name: d, accidental: sharp, octave: 4},
+        % note{name: c, accidental: sharp, octave: 4},
+        % note{name: c, accidental: natural, octave: 4},
+        % note{name: b, accidental: natural, octave: 4},
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e3) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 2},
+        note{name: f, accidental: natural, octave: 3},
+        note{name: f, accidental: sharp, octave: 4}%,
+        % note{name: g, accidental: natural, octave: 4},
+        % note{name: g, accidental: sharp, octave: 4},
+        % note{name: d, accidental: natural, octave: 4},
+        % note{name: d, accidental: sharp, octave: 4},
+        % note{name: c, accidental: sharp, octave: 4},
+        % note{name: c, accidental: natural, octave: 4},
+        % note{name: b, accidental: natural, octave: 4},
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e4) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 2},
+        note{name: f, accidental: natural, octave: 3},
+        note{name: f, accidental: sharp, octave: 4},
+        note{name: g, accidental: natural, octave: 3}%,
+        % note{name: g, accidental: sharp, octave: 4},
+        % note{name: d, accidental: natural, octave: 4},
+        % note{name: d, accidental: sharp, octave: 4},
+        % note{name: c, accidental: sharp, octave: 4},
+        % note{name: c, accidental: natural, octave: 4},
+        % note{name: b, accidental: natural, octave: 4},
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e5) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 2},
+        note{name: f, accidental: natural, octave: 3},
+        note{name: f, accidental: sharp, octave: 4},
+        note{name: g, accidental: natural, octave: 3},
+        note{name: g, accidental: sharp, octave: 4}%,
+        % note{name: d, accidental: natural, octave: 4},
+        % note{name: d, accidental: sharp, octave: 4},
+        % note{name: c, accidental: sharp, octave: 4},
+        % note{name: c, accidental: natural, octave: 4},
+        % note{name: b, accidental: natural, octave: 4},
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e6) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 2},
+        note{name: f, accidental: natural, octave: 3},
+        note{name: f, accidental: sharp, octave: 4},
+        note{name: g, accidental: natural, octave: 3},
+        note{name: g, accidental: sharp, octave: 4},
+        note{name: d, accidental: natural, octave: 4}%,
+        % note{name: d, accidental: sharp, octave: 4},
+        % note{name: c, accidental: sharp, octave: 4},
+        % note{name: c, accidental: natural, octave: 4},
+        % note{name: b, accidental: natural, octave: 4},
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e7) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 2},
+        note{name: f, accidental: natural, octave: 3},
+        note{name: f, accidental: sharp, octave: 4},
+        note{name: g, accidental: natural, octave: 3},
+        note{name: g, accidental: sharp, octave: 4},
+        note{name: d, accidental: natural, octave: 4},
+        note{name: d, accidental: sharp, octave: 3}%,
+        % note{name: c, accidental: sharp, octave: 4},
+        % note{name: c, accidental: natural, octave: 4},
+        % note{name: b, accidental: natural, octave: 4},
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e8) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 2},
+        note{name: f, accidental: natural, octave: 3},
+        note{name: f, accidental: sharp, octave: 4},
+        note{name: g, accidental: natural, octave: 3},
+        note{name: g, accidental: sharp, octave: 4},
+        note{name: d, accidental: natural, octave: 4},
+        note{name: d, accidental: sharp, octave: 3},
+        note{name: c, accidental: sharp, octave: 4}%,
+        % note{name: c, accidental: natural, octave: 4},
+        % note{name: b, accidental: natural, octave: 4},
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e9) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 2},
+        note{name: f, accidental: natural, octave: 3},
+        note{name: f, accidental: sharp, octave: 4},
+        note{name: g, accidental: natural, octave: 3},
+        note{name: g, accidental: sharp, octave: 4},
+        note{name: d, accidental: natural, octave: 4},
+        note{name: d, accidental: sharp, octave: 3},
+        note{name: c, accidental: sharp, octave: 4},
+        note{name: c, accidental: natural, octave: 5}%,
+        % note{name: b, accidental: natural, octave: 4},
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e10) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 4},
+        note{name: f, accidental: natural, octave: 4},
+        note{name: f, accidental: sharp, octave: 4},
+        note{name: g, accidental: natural, octave: 4},
+        note{name: g, accidental: sharp, octave: 4},
+        note{name: d, accidental: natural, octave: 4},
+        note{name: d, accidental: sharp, octave: 4},
+        note{name: c, accidental: sharp, octave: 4},
+        note{name: c, accidental: natural, octave: 4},
+        note{name: b, accidental: natural, octave: 4}%,
+        % note{name: a, accidental: sharp, octave: 4},
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e11) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 4},
+        note{name: f, accidental: natural, octave: 4},
+        note{name: f, accidental: sharp, octave: 4},
+        note{name: g, accidental: natural, octave: 4},
+        note{name: g, accidental: sharp, octave: 4},
+        note{name: d, accidental: natural, octave: 4},
+        note{name: d, accidental: sharp, octave: 4},
+        note{name: c, accidental: sharp, octave: 4},
+        note{name: c, accidental: natural, octave: 4},
+        note{name: b, accidental: natural, octave: 4},
+        note{name: a, accidental: sharp, octave: 4}%,
+        % note{name: a, accidental: natural, octave: 4}
+    ]).
+test(top_left_low_e12) :- 
+    angry_man_row([
+        note{name: e, accidental: natural, octave: 4},
+        note{name: f, accidental: natural, octave: 4},
+        note{name: f, accidental: sharp, octave: 4},
+        note{name: g, accidental: natural, octave: 4},
+        note{name: g, accidental: sharp, octave: 4},
+        note{name: d, accidental: natural, octave: 4},
+        note{name: d, accidental: sharp, octave: 4},
+        note{name: c, accidental: sharp, octave: 4},
+        note{name: c, accidental: natural, octave: 4},
+        note{name: b, accidental: natural, octave: 4},
+        note{name: a, accidental: sharp, octave: 4},
+        note{name: a, accidental: natural, octave: 4}
+    ]).
+
+:- end_tests(the_angry_man).
+
+
