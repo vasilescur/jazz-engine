@@ -393,9 +393,11 @@ $$
 \approx \prod
       \_{i = 0}
       ^{11}
+      \left\[
       \left(45 - i * \frac{45}{12}\right)
       *
       0.8\bar3
+      \right\]
 \approx
 4.15468 × 10^{14}
 $$
