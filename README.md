@@ -300,11 +300,11 @@ This is a known issue and work-in-progress.
 
 Let's dive into the numbers.
 
-The number of permutations without repetition $_nP_r$ read as "$n$ options pick $r$" is given by the formula:
+The number of permutations without repetition $\_nP\_r$ read as "$`n`$ options pick $`r`$" is given by the formula:
 
 $$
-\text{\# possible permutations} 
-= {_nP_r} 
+\text{Possible permutations} 
+= {\_nP\_r} 
 = \frac{n!}{(n-r)!}
 $$
 
@@ -312,16 +312,7 @@ In our case, there are 45 notes on the Martin DC-45.
 Each tone row has 12 tones.
 So, the number of possible 12-tone rows on the guitar is given by
 
-$$
-\begin{align*}
-
-\text{\# possible 12-tone rows} 
-= {_{45}P_{12}} 
-&= \frac{45!}{(45-12)!}
-&\approx 1.377 × 10^{19}
-
-\end{align*}
-$$
+$$\text{Possible 12-tone rows} = {\_{45}P\_{12}} = \frac{45!}{(45-12)!} \approx 1.377 × 10^{19}$$
 
 This is around 13 quintillion, or 13 billion billion possible combinations.
 
@@ -341,24 +332,20 @@ Since each tone is only used once,
 Following this logic we can re-write the permutations formula as
 
 $$
-{_nP_r} = 
+{\_nP\_r} = 
 \prod
-      _{i = 0}^{r - 1}
+      \_{i = 0}^{r - 1}
       (n - i)
 $$
 
 In our case, it yields the same result:
 
 $$
-\begin{align*}
-
-{_{45}P_{12}} 
+{\_{45}P\_{12}} 
 = \prod
-      _{i = 0}^{11}
+      \_{i = 0}^{11}
       (45 - i)
 \approx 1.377 × 10^{19}
-
-\end{align*}
 $$
 
 There are 5 vaild intervals between each note in The Angry Man's tone rows.
@@ -385,17 +372,14 @@ Assuming an even distribution of tones in the guitar's range,
 
 $$
 |N| \approx
-
-\left[
-
+\left\[
 45
-- 
-\underbrace{|E| * \frac{45}{12}}_{\text{Already used}}
+\-
+\underbrace{|E| * \frac{45}{12}}\_{\text{Already used}}
 ~
-\right]
+\right\]
 *
-\underbrace{\frac{(5 + 5) * 3.75}{45}}_{\text{Expected \% with valid interval}}
-
+\underbrace{\frac{(5 + 5) * 3.75}{45}}\_{\text{Expected \% with valid interval}}
 $$
 
 In the case of our tone rows, $|E|$ is given by the iteration variable
@@ -405,15 +389,14 @@ Simplifying yields the following estimate for the total number
       of possible Angry Man tone rows:
 
 $$
-\text{\# possible Angry Man rows}
+\text{Possible Angry Man rows}
 = \prod
-      _{i = 0}
+      \_{i = 0}
       ^{11}
       \left(45 - i * \frac{45}{12}\right)
       *
       (83.\bar3\%)
 \approx
-
 4.15468 × 10^{14}
 $$
 
