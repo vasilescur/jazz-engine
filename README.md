@@ -379,7 +379,7 @@ $$
 ~
 \right\]
 *
-\underbrace{\frac{(5 + 5) * 3.75}{45}}\_{\text{Expected \% with valid interval}}
+\underbrace{\frac{(5 + 5) * 3.75}{45}}\_{\text{Avg probability of valid interval}}
 $$
 
 In the case of our tone rows, $|E|$ is given by the iteration variable
