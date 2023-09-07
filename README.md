@@ -389,8 +389,8 @@ Simplifying yields the following estimate for the total number
       of possible Angry Man tone rows:
 
 $$
-\text{Possible Angry Man rows}
-= \prod
+\text{Angry Man rows}
+\approx \prod
       \_{i = 0}
       ^{11}
       \left(45 - i * \frac{45}{12}\right)
