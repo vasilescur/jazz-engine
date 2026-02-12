@@ -82,6 +82,8 @@ SecondNote = note{accidental:sharp, name:d, octave:4}.
 <img src="interval_backward_v2.png" width="500" />
 </p>
 
+Notice that the same `interval/3` predicate handles both directions — given two notes it computes the distance, and given one note and a distance it finds the other note. Prolog's built-in search eliminates the need for separate forward and backward implementations.
+
 ### Scales
 
 There are two important concepts in scales. 
