@@ -498,7 +498,9 @@ $S$ is the number of ways to arrange all 12 pitch classes into a sequence
 The `angry_successor_pc/2` facts define a graph
       where each of the 12 pitch classes points to exactly 5 others.
 
+<p align="center">
 <img src="angry_man_successor_graph.png" width="450" />
+</p>
 We need to count all orderings that visit every pitch class
       exactly once, following only the allowed edges.
 In graph theory, a path that visits every node exactly once

@@ -84,19 +84,19 @@ graph angry_man {
         style=invis
         margin=0
 
-        node [shape=plaintext, fillcolor="transparent", fontcolor="#333333", fontname="Helvetica", fontsize=11, width=0, fixedsize=false, color="transparent"]
+        node [shape=plaintext, fillcolor="transparent", fontcolor="#333333", fontname="Helvetica", fontsize=18, width=0, fixedsize=false, color="transparent"]
 
-        leg_pos [pos="0.000,-3.400!", label=<
-            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="4">
+        leg_pos [pos="0.000,-3.500!", label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="6">
                 <TR>
-                    <TD><FONT COLOR="#e74c3c">&#x2500;&#x2500;&#x2500;</FONT></TD>
-                    <TD ALIGN="LEFT"><FONT COLOR="#555555"> m2 / M7 (&#xb1;1)</FONT></TD>
-                    <TD>  </TD>
-                    <TD><FONT COLOR="#3498db">&#x2500;&#x2500;&#x2500;</FONT></TD>
-                    <TD ALIGN="LEFT"><FONT COLOR="#555555"> M2 / m7 (&#xb1;2)</FONT></TD>
-                    <TD>  </TD>
-                    <TD><FONT COLOR="#2ecc71">- - -</FONT></TD>
-                    <TD ALIGN="LEFT"><FONT COLOR="#555555"> tritone (&#xb1;6)</FONT></TD>
+                    <TD><FONT COLOR="#e74c3c" POINT-SIZE="24">&#x2500;&#x2500;&#x2500;&#x2500;</FONT></TD>
+                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="16"> m2 / M7 (&#xb1;1)</FONT></TD>
+                    <TD>   </TD>
+                    <TD><FONT COLOR="#3498db" POINT-SIZE="24">&#x2500;&#x2500;&#x2500;&#x2500;</FONT></TD>
+                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="16"> M2 / m7 (&#xb1;2)</FONT></TD>
+                    <TD>   </TD>
+                    <TD><FONT COLOR="#2ecc71" POINT-SIZE="24">- - - -</FONT></TD>
+                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="16"> tritone (&#xb1;6)</FONT></TD>
                 </TR>
             </TABLE>
         >]
