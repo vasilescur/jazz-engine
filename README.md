@@ -413,31 +413,16 @@ In other words, it's possible that as we pick more notes,
       it becomes either harder or easier to find notes that are a valid
       interval away. This *likely* depends on which notes we pick.
 
+To get past this assumption, we need a different strategy —
+      one that accounts for the actual structure of which tones
+      connect to which, rather than averaging over all possibilities.
+It turns out the code already encodes everything we need.
+
 #### The Angry Man: Exact Count
-
-It turns out we can use the structure of the code itself to compute
-      the exact number of Angry Man tone rows,
-      without any assumptions or approximations.
-Doing so reveals an error in the estimate above,
-      and a much more precise answer.
-
-##### Correcting the "5 up and 5 down" assumption
-
-The estimate above assumed "5 options up and 5 options down,"
-      yielding 10 distinct successor tones.
-But the Angry Man intervals come in complementary pairs:
-      minor 2nd (1 semitone) and major 7th (11 semitones),
-      major 2nd (2) and minor 7th (10),
-      plus the tritone (6) which is its own complement.
-Going *down* by a minor 2nd lands on the same pitch class
-      as going *up* by a major 7th ($-1 \equiv +11 \pmod{12}$), and so on.
-So the "5 up" and "5 down" collapse to just **5 unique successor tones**,
-      which we can confirm directly —
-      `angry_successor_pc/2` stores exactly 5 entries per pitch class.
 
 ##### Separating pitch classes from octaves
 
-A deeper insight emerges from the code structure.
+A key insight emerges from the code structure.
 The `angry_man_build` predicate checks two independent things
       for each candidate note:
 
