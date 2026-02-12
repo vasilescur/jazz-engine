@@ -366,6 +366,10 @@ For each successor tone,
 So, the probability of a given note being a valid interval away from another
       note is about $19/45 \approx 41.7\%$.
 
+<p align="center">
+<img src="angry_man_branching.png" width="550" />
+</p>
+
 Assuming an even distribution of tones in the guitar's range,
       the number of choices $|N|$ at each stage
       (given the existing row $E$)

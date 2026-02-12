@@ -1,0 +1,136 @@
+digraph branching {
+    // Layout
+    rankdir=TB
+    bgcolor="transparent"
+    pad=0.4
+    nodesep=0.5
+    ranksep=1.0
+
+    // Global styles
+    node [
+        fontname="Helvetica"
+        fontsize=16
+        style=filled
+        color="#4a4a6a"
+        penwidth=2
+    ]
+    edge [
+        fontname="Helvetica"
+        fontsize=13
+        color="#888888"
+        penwidth=2
+        arrowsize=0.8
+    ]
+
+    // --- Level 0: starting note ---
+    start [
+        label="A"
+        shape=circle
+        fillcolor="#1a1a2e"
+        fontcolor="white"
+        fontsize=22
+        width=0.8
+        fixedsize=true
+    ]
+
+    // --- Level 1: 5 successor pitch classes ---
+    node [
+        shape=circle
+        fillcolor="#2c3e6b"
+        fontcolor="white"
+        fontsize=16
+        width=0.7
+        fixedsize=true
+    ]
+
+    s_as  [label="A#"]
+    s_gs  [label="G#"]
+    s_b   [label="B"]
+    s_g   [label="G"]
+    s_ds  [label="D#"]
+
+    start -> s_as  [label=" ±1 ", fontcolor="#e74c3c", color="#e74c3c"]
+    start -> s_gs  [label=" ±1 ", fontcolor="#e74c3c", color="#e74c3c"]
+    start -> s_b   [label=" ±2 ", fontcolor="#3498db", color="#3498db"]
+    start -> s_g   [label=" ±2 ", fontcolor="#3498db", color="#3498db"]
+    start -> s_ds  [label=" ±6 ", fontcolor="#2ecc71", color="#2ecc71", style=dashed]
+
+    // Label for this level
+    lbl1 [label="5 successor\npitch classes", shape=plaintext, fillcolor="transparent", fontcolor="#777777", fontsize=14, fontname="Helvetica-Oblique"]
+
+    // --- Level 2: octave choices for B ---
+    node [
+        shape=box
+        fillcolor="#34495e"
+        fontcolor="white"
+        fontsize=14
+        width=0.6
+        height=0.4
+        fixedsize=false
+        style="filled,rounded"
+    ]
+
+    b3 [label="B3"]
+    b4 [label="B4"]
+    b5 [label="B5"]
+    b6 [label="B6"]
+
+    s_b -> b3
+    s_b -> b4 [penwidth=3, color="#3498db"]
+    s_b -> b5
+    s_b -> b6
+
+    // Ellipsis nodes for other branches
+    node [shape=plaintext, fillcolor="transparent", fontcolor="#999999", fontsize=20]
+    dots_as [label="⋮"]
+    dots_gs [label="⋮"]
+    dots_g  [label="⋮"]
+    dots_ds [label="⋮"]
+
+    s_as -> dots_as [style=dotted, color="#cccccc"]
+    s_gs -> dots_gs [style=dotted, color="#cccccc"]
+    s_g  -> dots_g  [style=dotted, color="#cccccc"]
+    s_ds -> dots_ds [style=dotted, color="#cccccc"]
+
+    // Label for this level
+    lbl2 [label="~3.75 octave\nchoices each", shape=plaintext, fillcolor="transparent", fontcolor="#777777", fontsize=14, fontname="Helvetica-Oblique"]
+
+    // --- Level 3: from chosen B4, next successors (minus A, already used) ---
+    node [
+        shape=circle
+        fillcolor="#2c3e6b"
+        fontcolor="white"
+        fontsize=16
+        width=0.7
+        fixedsize=true
+    ]
+
+    // B's successors: C(±1), A#(±1), C#(±2), A(±2, USED), F(±6)
+    n_c   [label="C"]
+    n_as2 [label="A#"]
+    n_cs  [label="C#"]
+    n_f   [label="F"]
+
+    // A is already used — show it crossed out
+    n_a_used [label="A ✗", fillcolor="#6b2c2c", fontcolor="#cc6666", fontsize=14]
+
+    b4 -> n_c    [label=" ±1 ", fontcolor="#e74c3c", color="#e74c3c"]
+    b4 -> n_as2  [label=" ±1 ", fontcolor="#e74c3c", color="#e74c3c"]
+    b4 -> n_cs   [label=" ±2 ", fontcolor="#3498db", color="#3498db"]
+    b4 -> n_a_used [label=" ±2 ", fontcolor="#cccccc", color="#cccccc", style=dotted]
+    b4 -> n_f    [label=" ±6 ", fontcolor="#2ecc71", color="#2ecc71", style=dashed]
+
+    // Label for this level
+    lbl3 [label="4 unused successor\npitch classes remain", shape=plaintext, fillcolor="transparent", fontcolor="#777777", fontsize=14, fontname="Helvetica-Oblique"]
+
+    // --- Alignment ---
+    { rank=same; start; }
+    { rank=same; s_as; s_gs; s_b; s_g; s_ds; lbl1; }
+    { rank=same; b3; b4; b5; b6; dots_as; dots_gs; dots_g; dots_ds; lbl2; }
+    { rank=same; n_c; n_as2; n_cs; n_a_used; n_f; lbl3; }
+
+    // Invisible edges for label positioning
+    edge [style=invis]
+    lbl1 -> lbl2
+    lbl2 -> lbl3
+}
