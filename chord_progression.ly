@@ -26,6 +26,6 @@
   }
   \layout { }
   \midi {
-    \tempo 4 = 144
+    \tempo 4 = 280
   }
 }
