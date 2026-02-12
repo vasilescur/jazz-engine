@@ -488,8 +488,7 @@ $$
 
 Note that the geometric mean of octaves per pitch class
       is $\sqrt[12]{O} = \sqrt[12]{7{,}077{,}888} \approx 3.72$,
-      very close to the estimate's assumed average of $45/12 = 3.75$.
-So the octave part of the estimate was quite accurate.
+      very close to the original estimate's assumed average of $45/12 = 3.75$.
 
 ##### Computing $S$: valid pitch-class sequences
 
