@@ -163,6 +163,10 @@ chord{root: _, pattern: <minor pattern>, degrees: [1, 3, 5], adjustments: [natur
 chord{root: _, pattern: <major pattern>, degrees: [1, 3, 5], adjustments: [natural, flat, natural]}
 ```
 
+<p align="center">
+<img src="chord_formation.png" width="500" />
+</p>
+
 #### Available Chord Shortcuts:
 
 - `major_chord/3`

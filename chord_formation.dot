@@ -1,0 +1,122 @@
+digraph chord_formation {
+    rankdir=TB
+    bgcolor="transparent"
+    pad=0.4
+    nodesep=0.3
+    ranksep=0.45
+
+    node [fontname="Helvetica"]
+    edge [fontname="Helvetica"]
+
+    // --- Row 1: Input fields ---
+    root [
+        label=<<FONT POINT-SIZE="22" COLOR="#333333"><B>C</B></FONT><BR/><FONT POINT-SIZE="14" COLOR="#888888">root</FONT>>
+        shape=box style="filled,rounded"
+        fillcolor="#e0e0e0" color="#bbbbbb"
+        penwidth=2 margin="0.15,0.08"
+    ]
+
+    pattern [
+        label=<<FONT POINT-SIZE="22" COLOR="#333333"><B>[0,2,3,5,7,8,10]</B></FONT><BR/><FONT POINT-SIZE="14" COLOR="#888888">pattern (minor)</FONT>>
+        shape=box style="filled,rounded"
+        fillcolor="#e0e0e0" color="#bbbbbb"
+        penwidth=2 margin="0.15,0.08"
+    ]
+
+    degrees [
+        label=<<FONT POINT-SIZE="22" COLOR="#333333"><B>[1, 3, 5]</B></FONT><BR/><FONT POINT-SIZE="14" COLOR="#888888">degrees</FONT>>
+        shape=box style="filled,rounded"
+        fillcolor="#e0e0e0" color="#bbbbbb"
+        penwidth=2 margin="0.15,0.08"
+    ]
+
+    adjustments [
+        label=<<FONT POINT-SIZE="22" COLOR="#333333"><B>[♮, ♮, ♭]</B></FONT><BR/><FONT POINT-SIZE="14" COLOR="#888888">adjustments</FONT>>
+        shape=box style="filled,rounded"
+        fillcolor="#e0e0e0" color="#bbbbbb"
+        penwidth=2 margin="0.15,0.08"
+    ]
+
+    { rank=same; root; pattern; degrees; adjustments; }
+
+    // --- Row 2: Generated scale ---
+    scale [
+        shape=none margin=0
+        label=<
+        <TABLE BORDER="0" CELLBORDER="2" CELLSPACING="0" CELLPADDING="8">
+        <TR>
+            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">1</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>C</B></FONT></TD>
+            <TD BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">2</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">D</FONT></TD>
+            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">3</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>E♭</B></FONT></TD>
+            <TD BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">4</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">F</FONT></TD>
+            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">5</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>G</B></FONT></TD>
+            <TD BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">6</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">A♭</FONT></TD>
+            <TD BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">7</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">B♭</FONT></TD>
+        </TR>
+        </TABLE>
+        >
+    ]
+
+    scale_label [
+        label=<<FONT POINT-SIZE="14" COLOR="#888888"><I>scale from root + pattern</I></FONT>>
+        shape=plaintext
+    ]
+
+    // --- Row 3: Selected notes before adjustment ---
+    selected [
+        shape=none margin=0
+        label=<
+        <TABLE BORDER="0" CELLBORDER="2" CELLSPACING="12" CELLPADDING="8">
+        <TR>
+            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>C</B></FONT></TD>
+            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>E♭</B></FONT></TD>
+            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>G</B></FONT></TD>
+        </TR>
+        </TABLE>
+        >
+    ]
+
+    selected_label [
+        label=<<FONT POINT-SIZE="14" COLOR="#888888"><I>selected by degrees</I></FONT>>
+        shape=plaintext
+    ]
+
+    // --- Row 4: Final chord notes ---
+    result [
+        shape=none margin=0
+        label=<
+        <TABLE BORDER="0" CELLBORDER="2" CELLSPACING="12" CELLPADDING="8" STYLE="rounded">
+        <TR>
+            <TD BGCOLOR="#d4eab8" COLOR="#7aaa5a"><FONT POINT-SIZE="20" COLOR="#3a6b2c"><B>C</B></FONT><BR/><FONT POINT-SIZE="12" COLOR="#6a9b5a">♮</FONT></TD>
+            <TD BGCOLOR="#d4eab8" COLOR="#7aaa5a"><FONT POINT-SIZE="20" COLOR="#3a6b2c"><B>E♭</B></FONT><BR/><FONT POINT-SIZE="12" COLOR="#6a9b5a">♮</FONT></TD>
+            <TD BGCOLOR="#d4eab8" COLOR="#7aaa5a"><FONT POINT-SIZE="20" COLOR="#3a6b2c"><B>G♭</B></FONT><BR/><FONT POINT-SIZE="12" COLOR="#6a9b5a">♭</FONT></TD>
+        </TR>
+        </TABLE>
+        >
+    ]
+
+    result_label [
+        label=<<FONT POINT-SIZE="16" COLOR="#3a6b2c"><B>C diminished</B></FONT>>
+        shape=plaintext
+    ]
+
+    // --- Edges ---
+    root -> scale [color="#999999" penwidth=1.5]
+    pattern -> scale [color="#999999" penwidth=1.5]
+
+    degrees -> selected [color="#7a9fd4" penwidth=1.5]
+    scale -> selected [color="#7a9fd4" penwidth=1.5]
+
+    adjustments -> result [color="#7aaa5a" penwidth=1.5]
+    selected -> result [color="#7aaa5a" penwidth=1.5]
+
+    // --- Labels positioned beside their rows ---
+    { rank=same; scale; scale_label; }
+    { rank=same; selected; selected_label; }
+    { rank=same; result; result_label; }
+
+    // Invisible edges for label positioning
+    scale -> scale_label [style=invis]
+    selected -> selected_label [style=invis]
+    result -> result_label [style=invis]
+}
