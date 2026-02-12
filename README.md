@@ -250,6 +250,10 @@ Chords = [
 ].
 ```
 
+<p align="center">
+<img src="chord_progression_I_vi_ii_V_G.png" />
+</p>
+
 # The Angry Man
 
 <img src="https://stevedukes.com/wp-content/uploads/2021/08/pict4.jpeg" />
