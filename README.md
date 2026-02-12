@@ -169,14 +169,16 @@ chord{root: _, pattern: <major pattern>, degrees: [1, 3, 5], adjustments: [natur
 
 #### Available Chord Shortcuts:
 
-- `major_chord/3`
-- `minor_chord/3`
-- `diminished_chord/3`
-- `augmented_chord/3`
-- `major_minor_major_7_chord/3`
-- `sus2_chord/3`
-- `sus4_chord/3`
-- `nine_sus4_chord/3`
+| Shortcut | Pattern | Degrees | Adjustments |
+|----------|---------|---------|-------------|
+| `major_chord/2` | major | [1, 3, 5] | [♮, ♮, ♮] |
+| `minor_chord/2` | minor | [1, 3, 5] | [♮, ♮, ♮] |
+| `diminished_chord/2` | minor | [1, 3, 5] | [♮, ♮, ♭] |
+| `augmented_chord/2` | major | [1, 3, 5] | [♮, ♮, ♯] |
+| `major_minor_major_7_chord/2` | major | [1, 3, 5, 7] | [♮, ♮, ♮, ♮] |
+| `sus2_chord/2` | major | [1, 2, 5] | [♮, ♮, ♮] |
+| `sus4_chord/2` | major | [1, 4, 5] | [♮, ♮, ♮] |
+| `nine_sus4_chord/2` | major | [1, 4, 5, 2] | [♮, ♮, ♮, ♮] |
 
 ### Chord Notes
 
