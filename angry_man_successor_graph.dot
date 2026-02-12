@@ -13,70 +13,70 @@ graph angry_man {
         fillcolor="#1a1a2e"
         fontcolor="white"
         fontname="Helvetica-Bold"
-        fontsize=14
-        width=0.7
+        fontsize=28
+        width=1.2
         fixedsize=true
         color="#4a4a6a"
-        penwidth=2
+        penwidth=3
     ]
 
     // Global edge style
     edge [
         color="#666688"
-        penwidth=1.5
+        penwidth=2.5
     ]
 
-    // Place 12 pitch classes in a circle (radius ~2.2)
+    // Place 12 pitch classes in a circle (radius ~4.4)
     // Angles: PC 0 at top (90°), going clockwise by 30°
-    "A"   [pos="0.000, 2.200!"]
-    "A#"  [pos="1.100, 1.905!"]
-    "B"   [pos="1.905, 1.100!"]
-    "C"   [pos="2.200, 0.000!"]
-    "C#"  [pos="1.905,-1.100!"]
-    "D"   [pos="1.100,-1.905!"]
-    "D#"  [pos="0.000,-2.200!"]
-    "E"   [pos="-1.100,-1.905!"]
-    "F"   [pos="-1.905,-1.100!"]
-    "F#"  [pos="-2.200, 0.000!"]
-    "G"   [pos="-1.905, 1.100!"]
-    "G#"  [pos="-1.100, 1.905!"]
+    "A"   [pos="0.000, 4.400!"]
+    "A#"  [pos="2.200, 3.810!"]
+    "B"   [pos="3.810, 2.200!"]
+    "C"   [pos="4.400, 0.000!"]
+    "C#"  [pos="3.810,-2.200!"]
+    "D"   [pos="2.200,-3.810!"]
+    "D#"  [pos="0.000,-4.400!"]
+    "E"   [pos="-2.200,-3.810!"]
+    "F"   [pos="-3.810,-2.200!"]
+    "F#"  [pos="-4.400, 0.000!"]
+    "G"   [pos="-3.810, 2.200!"]
+    "G#"  [pos="-2.200, 3.810!"]
 
     // Edges from offsets [+1, +2, +6] (undirected, so no need for -1, -2)
     // +1 edges (minor 2nd / major 7th) - adjacent on circle
-    "A"  -- "A#"  [color="#e74c3c", penwidth=2, label="m2", fontcolor="#e74c3c", fontsize=0]
-    "A#" -- "B"   [color="#e74c3c", penwidth=2]
-    "B"  -- "C"   [color="#e74c3c", penwidth=2]
-    "C"  -- "C#"  [color="#e74c3c", penwidth=2]
-    "C#" -- "D"   [color="#e74c3c", penwidth=2]
-    "D"  -- "D#"  [color="#e74c3c", penwidth=2]
-    "D#" -- "E"   [color="#e74c3c", penwidth=2]
-    "E"  -- "F"   [color="#e74c3c", penwidth=2]
-    "F"  -- "F#"  [color="#e74c3c", penwidth=2]
-    "F#" -- "G"   [color="#e74c3c", penwidth=2]
-    "G"  -- "G#"  [color="#e74c3c", penwidth=2]
-    "G#" -- "A"   [color="#e74c3c", penwidth=2]
+    "A"  -- "A#"  [color="#e74c3c", penwidth=3]
+    "A#" -- "B"   [color="#e74c3c", penwidth=3]
+    "B"  -- "C"   [color="#e74c3c", penwidth=3]
+    "C"  -- "C#"  [color="#e74c3c", penwidth=3]
+    "C#" -- "D"   [color="#e74c3c", penwidth=3]
+    "D"  -- "D#"  [color="#e74c3c", penwidth=3]
+    "D#" -- "E"   [color="#e74c3c", penwidth=3]
+    "E"  -- "F"   [color="#e74c3c", penwidth=3]
+    "F"  -- "F#"  [color="#e74c3c", penwidth=3]
+    "F#" -- "G"   [color="#e74c3c", penwidth=3]
+    "G"  -- "G#"  [color="#e74c3c", penwidth=3]
+    "G#" -- "A"   [color="#e74c3c", penwidth=3]
 
     // +2 edges (major 2nd / minor 7th) - skip one
-    "A"  -- "B"   [color="#3498db", penwidth=2]
-    "A#" -- "C"   [color="#3498db", penwidth=2]
-    "B"  -- "C#"  [color="#3498db", penwidth=2]
-    "C"  -- "D"   [color="#3498db", penwidth=2]
-    "C#" -- "D#"  [color="#3498db", penwidth=2]
-    "D"  -- "E"   [color="#3498db", penwidth=2]
-    "D#" -- "F"   [color="#3498db", penwidth=2]
-    "E"  -- "F#"  [color="#3498db", penwidth=2]
-    "F"  -- "G"   [color="#3498db", penwidth=2]
-    "F#" -- "G#"  [color="#3498db", penwidth=2]
-    "G"  -- "A"   [color="#3498db", penwidth=2]
-    "G#" -- "B"   [color="#3498db", penwidth=2]
+    "A"  -- "B"   [color="#3498db", penwidth=3]
+    "A#" -- "C"   [color="#3498db", penwidth=3]
+    "B"  -- "C#"  [color="#3498db", penwidth=3]
+    "C"  -- "D"   [color="#3498db", penwidth=3]
+    "C#" -- "D#"  [color="#3498db", penwidth=3]
+    "D"  -- "E"   [color="#3498db", penwidth=3]
+    "D#" -- "F"   [color="#3498db", penwidth=3]
+    "E"  -- "F#"  [color="#3498db", penwidth=3]
+    "F"  -- "G"   [color="#3498db", penwidth=3]
+    "F#" -- "G#"  [color="#3498db", penwidth=3]
+    "G"  -- "A"   [color="#3498db", penwidth=3]
+    "G#" -- "B"   [color="#3498db", penwidth=3]
 
     // +6 edges (tritone) - opposite on circle
-    "A"  -- "D#"  [color="#2ecc71", penwidth=2, style=dashed]
-    "A#" -- "E"   [color="#2ecc71", penwidth=2, style=dashed]
-    "B"  -- "F"   [color="#2ecc71", penwidth=2, style=dashed]
-    "C"  -- "F#"  [color="#2ecc71", penwidth=2, style=dashed]
-    "C#" -- "G"   [color="#2ecc71", penwidth=2, style=dashed]
-    "D"  -- "G#"  [color="#2ecc71", penwidth=2, style=dashed]
+    "A"  -- "D#"  [color="#2ecc71", penwidth=3, style=dashed]
+    "A#" -- "E"   [color="#2ecc71", penwidth=3, style=dashed]
+    "B"  -- "F"   [color="#2ecc71", penwidth=3, style=dashed]
+    "C"  -- "F#"  [color="#2ecc71", penwidth=3, style=dashed]
+    "C#" -- "G"   [color="#2ecc71", penwidth=3, style=dashed]
+    "D"  -- "G#"  [color="#2ecc71", penwidth=3, style=dashed]
 
     // Legend
     subgraph cluster_legend {
@@ -86,17 +86,17 @@ graph angry_man {
 
         node [shape=plaintext, fillcolor="transparent", fontcolor="#333333", fontname="Helvetica", fontsize=18, width=0, fixedsize=false, color="transparent"]
 
-        leg_pos [pos="0.000,-3.500!", label=<
-            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="6">
+        leg_pos [pos="0.000,-6.400!", label=<
+            <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="8">
                 <TR>
-                    <TD><FONT COLOR="#e74c3c" POINT-SIZE="54">&#x2500;&#x2500;&#x2500;&#x2500;</FONT></TD>
-                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="54"> m2 / M7 (&#xb1;1)</FONT></TD>
+                    <TD><FONT COLOR="#e74c3c" POINT-SIZE="42">&#x2500;&#x2500;&#x2500;</FONT></TD>
+                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="36"> m2 / M7 (&#xb1;1)</FONT></TD>
                     <TD>   </TD>
-                    <TD><FONT COLOR="#3498db" POINT-SIZE="54">&#x2500;&#x2500;&#x2500;&#x2500;</FONT></TD>
-                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="54"> M2 / m7 (&#xb1;2)</FONT></TD>
+                    <TD><FONT COLOR="#3498db" POINT-SIZE="42">&#x2500;&#x2500;&#x2500;</FONT></TD>
+                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="36"> M2 / m7 (&#xb1;2)</FONT></TD>
                     <TD>   </TD>
-                    <TD><FONT COLOR="#2ecc71" POINT-SIZE="54">- - - -</FONT></TD>
-                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="54"> tritone (&#xb1;6)</FONT></TD>
+                    <TD><FONT COLOR="#2ecc71" POINT-SIZE="42">- - -</FONT></TD>
+                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="36"> tritone (&#xb1;6)</FONT></TD>
                 </TR>
             </TABLE>
         >]
