@@ -62,7 +62,7 @@ IntervalName = minor_third.
 ```
 
 <p align="center">
-<img src="interval_forward_v2.png" width="500" />
+<img src="images/interval_forward_v2.png" width="500" />
 </p>
 
 **Example: Using `interval/3` to find the note a given distance away**
@@ -79,7 +79,7 @@ SecondNote = note{accidental:sharp, name:d, octave:4}.
 ```
 
 <p align="center">
-<img src="interval_backward_v2.png" width="500" />
+<img src="images/interval_backward_v2.png" width="500" />
 </p>
 
 Notice that the same `interval/3` predicate handles both directions — given two notes it computes the distance, and given one note and a distance it finds the other note. Prolog's built-in search eliminates the need for separate forward and backward implementations.
@@ -164,7 +164,7 @@ chord{root: _, pattern: <major pattern>, degrees: [1, 3, 5], adjustments: [natur
 ```
 
 <p align="center">
-<img src="chord_formation_v4.png" />
+<img src="images/chord_formation_v4.png" />
 </p>
 
 #### Available Chord Shortcuts:
@@ -251,11 +251,11 @@ Chords = [
 ```
 
 <p align="center">
-<img src="chord_progression_I_vi_ii_V_G.png" />
+<img src="images/chord_progression_I_vi_ii_V_G.png" />
 </p>
 
 <p align="center">
-<a href="chord_progression_I_vi_ii_V_G.mp4?raw=true">Listen to chord progression</a>
+<a href="images/chord_progression_I_vi_ii_V_G.mp4?raw=true">Listen to chord progression</a>
 </p>
 
 # The Angry Man
@@ -391,7 +391,7 @@ So, the probability of a given note being a valid interval away from another
       note is about $19/45 \approx 41.7\%$.
 
 <p align="center">
-<img src="angry_man_branching_v3.png" width="100%" />
+<img src="images/angry_man_branching_v3.png" width="100%" />
 </p>
 
 Assuming an even distribution of tones in the guitar's range,
@@ -541,7 +541,7 @@ The `angry_successor_pc/2` facts define a graph
       where each of the 12 pitch classes points to exactly 5 others.
 
 <p align="center">
-<img src="angry_man_successor_graph.png" width="450" />
+<img src="images/angry_man_successor_graph.png" width="450" />
 </p>
 
 We need to count all orderings that visit every pitch class
