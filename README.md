@@ -357,17 +357,18 @@ Let's estimate this as the number of notes already in the row,
       multiplied by the expected probability that a given note will
       fall one of the accepted intervals away from a given note.
 
-From any given note, there are 5 options up and 5 options down.
-      For each option (which is a tone), 
+From any given note, there are 5 unique successor tones
+      (as explained in the next section).
+For each successor tone,
       there are about $45/12 = 3.75$ octaves in which it could fall,
-      meaning each note really has about 
-      $(5 + 5) * 3.75 \approx 37$ valid options for a next note.
+      meaning each note really has about
+      $5 * 3.75 \approx 19$ valid options for a next note.
 So, the probability of a given note being a valid interval away from another
-      note is about $37/45 \approx 82.2\%$.
+      note is about $19/45 \approx 41.7\%$.
 
-Assuming an even distribution of tones in the guitar's range, 
-      the number of choices $|N|$ at each stage 
-      (given the existing row $E$) 
+Assuming an even distribution of tones in the guitar's range,
+      the number of choices $|N|$ at each stage
+      (given the existing row $E$)
       is now estimated by the following equation:
 
 $$
@@ -379,11 +380,11 @@ $$
 ~
 \right\]
 *
-\underbrace{\frac{(5 + 5) * 3.75}{45}}\_{\text{Avg probability of valid interval}}
+\underbrace{\frac{5 * 3.75}{45}}\_{\text{Avg probability of valid interval}}
 $$
 
 In the case of our tone rows, $|E|$ is given by the iteration variable
-      $i$ at each step. 
+      $i$ at each step.
 
 Simplifying yields the following estimate for the total number
       of possible Angry Man tone rows:
@@ -396,13 +397,13 @@ $$
       \left\[
       \left(45 - i * \frac{45}{12}\right)
       *
-      0.8\bar3
+      0.41\bar6
       \right\]
 \approx
-4.15468 × 10^{14}
+1.01 × 10^{11}
 $$
 
-This gives us about 415 trillion (or 415 million million) possible Angry Man tone rows.
+This gives us about 101 billion possible Angry Man tone rows.
 
 That number is still based on a big hidden assumption:
       the probability of picking a valid (right interval away) note
