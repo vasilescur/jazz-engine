@@ -62,7 +62,7 @@ IntervalName = minor_third.
 ```
 
 <p align="center">
-<img src="interval_forward_v2.png" />
+<img src="interval_forward_v2.png" width="500" />
 </p>
 
 **Example: Using `interval/3` to find the note a given distance away**
@@ -79,7 +79,7 @@ SecondNote = note{accidental:sharp, name:d, octave:4}.
 ```
 
 <p align="center">
-<img src="interval_backward_v2.png" />
+<img src="interval_backward_v2.png" width="500" />
 </p>
 
 ### Scales
