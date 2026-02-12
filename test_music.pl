@@ -1,4 +1,5 @@
 :- ensure_loaded(music).
+:- ensure_loaded(angry_man).
 
 :- begin_tests(notes).
 
@@ -867,6 +868,12 @@ test(top_left_low_e12) :-
         note{name: a, accidental: sharp, octave: 4},
         note{name: a, accidental: natural, octave: 4}
     ]).
+
+test(generate_and_verify_100) :-
+    findnsols(100, Row, (length(Row, 12), angry_man_row(Row)), Rows),
+    !,
+    length(Rows, 100),
+    maplist(angry_man_row, Rows).
 
 :- end_tests(the_angry_man).
 

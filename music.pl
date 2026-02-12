@@ -159,18 +159,22 @@ is_guitar_playable(Note) :-
 
 interval(First, Second, Semitones) :-
     mk_note_list(Notes),
-
     sharpify_flats(First, FirstNorm),
     sharpify_flats(Second, SecondNorm),
-
     nth0(IndexFirst, Notes, FirstNorm),
     nth0(IndexSecond, Notes, SecondNorm),
     Semitones is IndexSecond - IndexFirst,
     Semitones >= 0,
-
-    !; % Cut because: if already found an interval, eliminate choice point. 
-       % If not, check the backwards interval.
-    interval(Second, First, Semitones).
+    !.
+interval(First, Second, Semitones) :-
+    mk_note_list(Notes),
+    sharpify_flats(Second, SecondNorm),
+    sharpify_flats(First, FirstNorm),
+    nth0(IndexSecond, Notes, SecondNorm),
+    nth0(IndexFirst, Notes, FirstNorm),
+    Semitones is IndexFirst - IndexSecond,
+    Semitones >= 0,
+    !.
 
 
 interval_octave_agnostic(First, Second, Semitones) :- 
@@ -333,8 +337,43 @@ chord_progression(Tonic, Pattern, Degrees, Chords) :-
 
 % test :-
 %     interval(
-%         note{name: c, accidental: natural, octave: 4}, 
-%         note{name: d, accidental: flat, octave: 4}, 
+%         note{name: c, accidental: natural, octave: 4},
+%         note{name: d, accidental: flat, octave: 4},
 %         Interval
 %     ),
 %     interval_name(Interval, IntervalName).
+
+
+% Pitch class index (0-11, starting from A natural)
+note_pitch_class(a, natural, 0).
+note_pitch_class(a, sharp, 1).
+note_pitch_class(b, natural, 2).
+note_pitch_class(c, natural, 3).
+note_pitch_class(c, sharp, 4).
+note_pitch_class(d, natural, 5).
+note_pitch_class(d, sharp, 6).
+note_pitch_class(e, natural, 7).
+note_pitch_class(f, natural, 8).
+note_pitch_class(f, sharp, 9).
+note_pitch_class(g, natural, 10).
+note_pitch_class(g, sharp, 11).
+
+% Precomputed guitar note lookup tables (populated at load time)
+:- dynamic guitar_note/1.
+:- dynamic guitar_note_by_pc/2.
+
+precompute_guitar_notes :-
+    retractall(guitar_note(_)),
+    retractall(guitar_note_by_pc(_, _)),
+    mk_note_list_guitar(Notes),
+    forall(
+        member(Note, Notes),
+        (
+            assertz(guitar_note(Note)),
+            Note = note{name: Name, accidental: Accidental, octave: _},
+            note_pitch_class(Name, Accidental, PC),
+            assertz(guitar_note_by_pc(PC, Note))
+        )
+    ).
+
+:- precompute_guitar_notes.

@@ -98,24 +98,65 @@ angry_man_next_note([FirstNote | Tail], NextNote) :-
     member(Interval, AngryManIntervals).
 
 
-angry_man_row([]).
+% Precomputed angry man successor pitch classes for fast lookup
+:- dynamic angry_successor_pc/2.
 
-% General case
-% angry_man_row/1 takes a list of notes and checks if it is an Angry Man row
+precompute_angry_successors :-
+    retractall(angry_successor_pc(_, _)),
+    % Offsets from angry man intervals: m2(1), M2(2), tritone(6), m7(10=-2), M7(11=-1)
+    Offsets = [1, -1, 2, -2, 6],
+    forall(
+        between(0, 11, PC),
+        forall(
+            member(Offset, Offsets),
+            (
+                SuccPC is (PC + Offset + 12) mod 12,
+                (angry_successor_pc(PC, SuccPC) -> true ; assertz(angry_successor_pc(PC, SuccPC)))
+            )
+        )
+    ).
+
+:- precompute_angry_successors.
+
+% Generate candidate next notes directly from interval constraints
+angry_man_candidate(PrevNote, NextNote) :-
+    PrevNote = note{name: PrevName, accidental: PrevAcc, octave: _},
+    note_pitch_class(PrevName, PrevAcc, PrevPC),
+    angry_successor_pc(PrevPC, NextPC),
+    guitar_note_by_pc(NextPC, NextNote).
+
+% Incremental angry man row generation.
+% Builds the row left-to-right, checking constraints at each step:
+%   - Each note must be guitar-playable
+%   - Each consecutive pair must be an angry man interval apart (octave-agnostic)
+%   - Each tone (name+accidental) is used at most once
 angry_man_row(Row) :-
-    reverse(Row, ReversedRow),
-    angry_man_row_helper(ReversedRow).
+    angry_man_build(Row, none, []).
 
-% angry_man_row_helper/1 is a helper predicate for angry_man_row/1
-% It takes a reversed list of notes and checks if it is an Angry Man row
-angry_man_row_helper([Note]) :-
-    % Base case: a single note is always an Angry Man row
-    is_guitar_playable(Note).
-angry_man_row_helper([LastNote, PenultimateNote | Tail]) :-
-    % Recursive case: check if the last note fits the prefix
-    is_guitar_playable(LastNote),
-    angry_man_next_note([PenultimateNote], LastNote),
-    angry_man_row_helper([PenultimateNote | Tail]).
+angry_man_build([], _, _).
+angry_man_build([Note|Rest], none, UsedTones) :-
+    guitar_note(Note),
+    Note = note{name: Name, accidental: Acc, octave: _},
+    \+ member(Name-Acc, UsedTones),
+    angry_man_build(Rest, just(Note), [Name-Acc|UsedTones]).
+angry_man_build([Note|Rest], just(Prev), UsedTones) :-
+    angry_man_candidate(Prev, Note),
+    Note = note{name: Name, accidental: Acc, octave: _},
+    \+ member(Name-Acc, UsedTones),
+    angry_man_build(Rest, just(Note), [Name-Acc|UsedTones]).
+
+% Old implementation (replaced by incremental version above):
+% angry_man_row([]).
+% angry_man_row(Row) :-
+%     reverse(Row, ReversedRow),
+%     angry_man_row_helper(ReversedRow),
+%     unique_tones(Row).
+% angry_man_row_helper([Note]) :-
+%     is_guitar_playable(Note).
+% angry_man_row_helper([LastNote, PenultimateNote | Tail]) :-
+%     is_guitar_playable(LastNote),
+%     angry_man_next_note([PenultimateNote], LastNote),
+%     angry_man_row_helper([PenultimateNote | Tail]).
 
 % Finding all valid angry man rows
 the_angry_man_helper(Row, Length) :-

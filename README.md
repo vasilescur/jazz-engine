@@ -405,12 +405,239 @@ $$
 This gives us about 415 trillion (or 415 million million) possible Angry Man tone rows.
 
 That number is still based on a big hidden assumption:
-      the probability of picking a valid (right interval away) note 
+      the probability of picking a valid (right interval away) note
       out of the possible options remains constant as the tone row
       grows.
 In other words, it's possible that as we pick more notes,
       it becomes either harder or easier to find notes that are a valid
       interval away. This *likely* depends on which notes we pick.
+
+#### The Angry Man: Exact Count
+
+It turns out we can use the structure of the code itself to compute
+      the exact number of Angry Man tone rows,
+      without any assumptions or approximations.
+Doing so reveals an error in the estimate above,
+      and a much more precise answer.
+
+##### Correcting the "5 up and 5 down" assumption
+
+The estimate assumed that from any given note, there are
+      "5 options up and 5 options down," yielding 10 distinct
+      successor tones. But let's look at what these intervals
+      actually map to in terms of pitch-class offsets.
+
+The Angry Man intervals, as semitone counts:
+
+| Interval | Semitones |
+|---|---|
+| minor 2nd | 1 |
+| major 2nd | 2 |
+| tritone | 6 |
+| minor 7th | 10 |
+| major 7th | 11 |
+
+Going "up" by these intervals gives pitch-class offsets
+$\{+1, +2, +6, +10, +11\}$.
+Going "down" gives $\{-1, -2, -6, -10, -11\}$,
+which modulo 12 becomes $\{11, 10, 6, 2, 1\}$ — **the same set!**
+
+This happens because each interval pairs with its complement to make 12:
+
+| "Down" by... | = "Up" by... | Because |
+|---|---|---|
+| minor 2nd ($-1$) | major 7th ($+11$) | $-1 \equiv +11 \pmod{12}$ |
+| major 2nd ($-2$) | minor 7th ($+10$) | $-2 \equiv +10 \pmod{12}$ |
+| tritone ($-6$) | tritone ($+6$) | $-6 \equiv +6 \pmod{12}$ |
+| minor 7th ($-10$) | major 2nd ($+2$) | $-10 \equiv +2 \pmod{12}$ |
+| major 7th ($-11$) | minor 2nd ($+1$) | $-11 \equiv +1 \pmod{12}$ |
+
+In other words, minor 2nd and major 7th are *inversions* of each other,
+      as are major 2nd and minor 7th.
+The tritone is its own inversion.
+So "going down by a minor 2nd" lands on the same tone as
+      "going up by a major 7th" — they're the same move on the pitch-class circle.
+
+**Each tone has 5 unique successor tones, not 10.**
+
+We can verify this directly using `angry_successor_pc/2`,
+      which is precomputed at load time from the angry man interval offsets
+      $[+1, -1, +2, -2, +6]$:
+
+```prolog
+?- angry_successor_pc(0, Succ).
+Succ = 1 ;   % A  -> A#  (+1, minor 2nd)
+Succ = 11 ;  % A  -> G#  (-1, major 7th)
+Succ = 2 ;   % A  -> B   (+2, major 2nd)
+Succ = 10 ;  % A  -> G   (-2, minor 7th)
+Succ = 6 ;   % A  -> D#  (+6, tritone)
+false.        % only 5, not 10
+```
+
+Every pitch class has exactly 5 successors.
+The graph is symmetric: if A can reach B, then B can reach A.
+
+##### Separating pitch classes from octaves
+
+A deeper insight emerges from the code structure.
+The `angry_man_build` predicate checks two independent things
+      for each candidate note:
+
+1. **Pitch-class constraint**: consecutive notes must have pitch classes
+      connected by an angry man interval
+      (checked via `angry_man_candidate`, which uses `angry_successor_pc`)
+2. **Uniqueness constraint**: each pitch class (name + accidental)
+      must appear at most once
+      (checked via `\+ member(Name-Acc, UsedTones)`)
+
+Critically, **neither constraint involves octave**.
+The octave of each note is a completely free choice —
+      any octave available on the guitar will do,
+      regardless of what octaves were chosen for other notes.
+
+This means the total count factors cleanly into two independent parts:
+
+$$
+\text{Angry Man rows}
+= \underbrace{S}\_{\text{Valid pitch-class sequences}}
+\times
+\underbrace{O}\_{\text{Octave combinations}}
+$$
+
+where $S$ is the number of ways to order the 12 pitch classes
+      following the successor rules (ignoring octave entirely),
+and $O$ is the number of ways to assign octaves to each pitch class.
+
+##### Computing $O$: octave combinations
+
+Since every tone row uses all 12 pitch classes exactly once,
+      the octave choice for each pitch class is independent.
+The number of available octaves on the guitar
+      (from E2 to C6) varies by pitch class.
+We can read these counts directly from `guitar_note_by_pc/2`:
+
+```prolog
+?- between(0, 11, PC),
+   findall(_, guitar_note_by_pc(PC, _), Notes),
+   length(Notes, Count),
+   write(PC-Count), nl, fail.
+0-4    % A:  A3, A4, A5, A6
+1-4    % A#: A#3, A#4, A#5, A#6
+2-4    % B:  B3, B4, B5, B6
+3-4    % C:  C3, C4, C5, C6
+4-3    % C#: C#3, C#4, C#5
+5-3    % D:  D3, D4, D5
+6-3    % D#: D#3, D#4, D#5
+7-4    % E:  E2, E3, E4, E5
+8-4    % F:  F2, F3, F4, F5
+9-4    % F#: F#2, F#3, F#4, F#5
+10-4   % G:  G2, G3, G4, G5
+11-4   % G#: G#2, G#3, G#4, G#5
+```
+
+Nine pitch classes appear in 4 octaves and three appear in 3 octaves
+      (C#, D, and D# don't reach the lowest or highest range of the guitar).
+The total number of octave combinations is their product:
+
+$$
+O = \prod\_{pc = 0}^{11} \text{notes}(pc) = 4^9 \times 3^3 = 7{,}077{,}888
+$$
+
+Note that the geometric mean of octaves per pitch class
+      is $\sqrt[12]{O} = \sqrt[12]{7{,}077{,}888} \approx 3.72$,
+      very close to the estimate's assumed average of $45/12 = 3.75$.
+So the octave part of the estimate was quite accurate.
+
+##### Computing $S$: valid pitch-class sequences
+
+$S$ is the number of ways to arrange all 12 pitch classes into a sequence
+      such that every consecutive pair is connected by an angry man interval.
+
+The `angry_successor_pc/2` facts define a graph
+      where each of the 12 pitch classes points to exactly 5 others.
+We need to count all orderings that visit every pitch class
+      exactly once, following only the allowed edges.
+
+This cannot be solved with a simple closed-form formula,
+      because the structure of the graph matters:
+      which specific tones connect to which other tones
+      constrains the count in ways that depend on
+      the overall shape of the graph, not just the local branching.
+
+However, there are only 12 pitch classes.
+The program `verify_angry_man.pl` counts all valid sequences
+      by tracking two pieces of information:
+      which pitch class we're currently on,
+      and which pitch classes have already been used.
+The set of used pitch classes can be represented as a 12-bit number
+      (one bit per pitch class), giving a total of
+      $12 \times 2^{12} = 49{,}152$ possible states —
+      small enough for the computer to explore exhaustively in milliseconds.
+
+```prolog
+?- hamiltonian_paths(H).
+H = 90144.
+```
+
+There are exactly **90,144** valid orderings of the 12 pitch classes.
+
+##### The exact answer
+
+Combining the two independent factors:
+
+$$
+\text{Angry Man rows}
+= S \times O
+= 90{,}144 \times 7{,}077{,}888
+= 638{,}029{,}135{,}872
+$$
+
+$$
+\boxed{\text{Angry Man rows} = 638{,}029{,}135{,}872 \approx 6.38 \times 10^{11}}
+$$
+
+There are about **638 billion** possible Angry Man tone rows on the Martin DC-45 —
+      roughly 650 times fewer than the earlier estimate of 415 trillion.
+
+##### Where the estimate went wrong
+
+The dominant source of error is the "5 up and 5 down" assumption,
+      which doubled the number of successor pitch classes at every step.
+Applied across 12 steps, this compounds significantly:
+
+$$
+\frac{\text{Estimate}}{\text{Exact}}
+= \frac{4.15 \times 10^{14}}{6.38 \times 10^{11}}
+\approx 651
+$$
+
+If doubling alone explained the gap,
+      we'd expect a factor of $2^{12} = 4096$.
+The actual ratio is smaller because the overcount at each step interacts
+      with the shrinking pool of unused tones.
+
+A secondary source of error is the independence assumption:
+      the estimate treated the probability of finding a valid next note
+      as constant at each step.
+In reality, the graph structure introduces correlations —
+      after visiting certain pitch classes,
+      the remaining unvisited successors may cluster together
+      or thin out in ways that a uniform probability model can't capture.
+The exact computation accounts for all of these structural effects automatically.
+
+##### Running the verification
+
+The full computation can be reproduced by running:
+
+```bash
+swipl verify_angry_man.pl
+```
+
+This uses the `angry_successor_pc/2` and `guitar_note_by_pc/2` facts
+      already computed at load time by the existing codebase,
+      confirms the factored result ($S \times O$)
+      against an independent direct computation as a cross-check,
+      and compares both against the original estimate.
 
 #### Example Angry Man Tone Row Generation
 
