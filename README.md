@@ -422,60 +422,17 @@ Doing so reveals an error in the estimate above,
 
 ##### Correcting the "5 up and 5 down" assumption
 
-The estimate assumed that from any given note, there are
-      "5 options up and 5 options down," yielding 10 distinct
-      successor tones. But let's look at what these intervals
-      actually map to in terms of pitch-class offsets.
-
-The Angry Man intervals, as semitone counts:
-
-| Interval | Semitones |
-|---|---|
-| minor 2nd | 1 |
-| major 2nd | 2 |
-| tritone | 6 |
-| minor 7th | 10 |
-| major 7th | 11 |
-
-Going "up" by these intervals gives pitch-class offsets
-$\{+1, +2, +6, +10, +11\}$.
-Going "down" gives $\{-1, -2, -6, -10, -11\}$,
-which modulo 12 becomes $\{11, 10, 6, 2, 1\}$ — **the same set!**
-
-This happens because each interval pairs with its complement to make 12:
-
-| "Down" by... | = "Up" by... | Because |
-|---|---|---|
-| minor 2nd ($-1$) | major 7th ($+11$) | $-1 \equiv +11 \pmod{12}$ |
-| major 2nd ($-2$) | minor 7th ($+10$) | $-2 \equiv +10 \pmod{12}$ |
-| tritone ($-6$) | tritone ($+6$) | $-6 \equiv +6 \pmod{12}$ |
-| minor 7th ($-10$) | major 2nd ($+2$) | $-10 \equiv +2 \pmod{12}$ |
-| major 7th ($-11$) | minor 2nd ($+1$) | $-11 \equiv +1 \pmod{12}$ |
-
-In other words, minor 2nd and major 7th are *inversions* of each other,
-      as are major 2nd and minor 7th.
-The tritone is its own inversion.
-So "going down by a minor 2nd" lands on the same tone as
-      "going up by a major 7th" — they're the same move on the pitch-class circle.
-
-**Each tone has 5 unique successor tones, not 10.**
-
-We can verify this directly using `angry_successor_pc/2`,
-      which is precomputed at load time from the angry man interval offsets
-      $[+1, -1, +2, -2, +6]$:
-
-```prolog
-?- angry_successor_pc(0, Succ).
-Succ = 1 ;   % A  -> A#  (+1, minor 2nd)
-Succ = 11 ;  % A  -> G#  (-1, major 7th)
-Succ = 2 ;   % A  -> B   (+2, major 2nd)
-Succ = 10 ;  % A  -> G   (-2, minor 7th)
-Succ = 6 ;   % A  -> D#  (+6, tritone)
-false.        % only 5, not 10
-```
-
-Every pitch class has exactly 5 successors.
-The graph is symmetric: if A can reach B, then B can reach A.
+The estimate above assumed "5 options up and 5 options down,"
+      yielding 10 distinct successor tones.
+But the Angry Man intervals come in complementary pairs:
+      minor 2nd (1 semitone) and major 7th (11 semitones),
+      major 2nd (2) and minor 7th (10),
+      plus the tritone (6) which is its own complement.
+Going *down* by a minor 2nd lands on the same pitch class
+      as going *up* by a major 7th ($-1 \equiv +11 \pmod{12}$), and so on.
+So the "5 up" and "5 down" collapse to just **5 unique successor tones**,
+      which we can confirm directly —
+      `angry_successor_pc/2` stores exactly 5 entries per pitch class.
 
 ##### Separating pitch classes from octaves
 
