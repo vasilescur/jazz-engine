@@ -25,4 +25,7 @@
     \bar "|."
   }
   \layout { }
+  \midi {
+    \tempo 4 = 72
+  }
 }

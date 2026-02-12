@@ -254,6 +254,12 @@ Chords = [
 <img src="chord_progression_I_vi_ii_V_G.png" />
 </p>
 
+<p align="center">
+<audio controls src="chord_progression_I_vi_ii_V_G.mp3">
+  <a href="chord_progression_I_vi_ii_V_G.mp3">Play chord progression (MP3)</a>
+</audio>
+</p>
+
 # The Angry Man
 
 <img src="https://stevedukes.com/wp-content/uploads/2021/08/pict4.jpeg" />
