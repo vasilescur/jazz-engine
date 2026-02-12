@@ -89,14 +89,14 @@ graph angry_man {
         leg_pos [pos="0.000,-3.500!", label=<
             <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="6">
                 <TR>
-                    <TD><FONT COLOR="#e74c3c" POINT-SIZE="24">&#x2500;&#x2500;&#x2500;&#x2500;</FONT></TD>
-                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="16"> m2 / M7 (&#xb1;1)</FONT></TD>
+                    <TD><FONT COLOR="#e74c3c" POINT-SIZE="32">&#x2500;&#x2500;&#x2500;&#x2500;</FONT></TD>
+                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="22"> m2 / M7 (&#xb1;1)</FONT></TD>
                     <TD>   </TD>
-                    <TD><FONT COLOR="#3498db" POINT-SIZE="24">&#x2500;&#x2500;&#x2500;&#x2500;</FONT></TD>
-                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="16"> M2 / m7 (&#xb1;2)</FONT></TD>
+                    <TD><FONT COLOR="#3498db" POINT-SIZE="32">&#x2500;&#x2500;&#x2500;&#x2500;</FONT></TD>
+                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="22"> M2 / m7 (&#xb1;2)</FONT></TD>
                     <TD>   </TD>
-                    <TD><FONT COLOR="#2ecc71" POINT-SIZE="24">- - - -</FONT></TD>
-                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="16"> tritone (&#xb1;6)</FONT></TD>
+                    <TD><FONT COLOR="#2ecc71" POINT-SIZE="32">- - - -</FONT></TD>
+                    <TD ALIGN="LEFT"><FONT COLOR="#555555" POINT-SIZE="22"> tritone (&#xb1;6)</FONT></TD>
                 </TR>
             </TABLE>
         >]
