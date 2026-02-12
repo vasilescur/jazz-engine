@@ -16,8 +16,8 @@ digraph branching {
     ]
     edge [
         fontname="Helvetica"
-        fontsize=13
-        color="#888888"
+        fontsize=12
+        color="#bbbbbb"
         penwidth=2
         arrowsize=0.8
     ]
@@ -49,39 +49,44 @@ digraph branching {
     s_g   [label="G"]
     s_ds  [label="D#"]
 
-    start -> s_as  [label=" ±1 ", fontcolor="#e74c3c", color="#e74c3c"]
-    start -> s_gs  [label=" ±1 ", fontcolor="#e74c3c", color="#e74c3c"]
-    start -> s_b   [label=" ±2 ", fontcolor="#3498db", color="#3498db"]
-    start -> s_g   [label=" ±2 ", fontcolor="#3498db", color="#3498db"]
-    start -> s_ds  [label=" ±6 ", fontcolor="#2ecc71", color="#2ecc71", style=dashed]
+    // All gray except A → B which is selected (blue, thick)
+    start -> s_as  [label=" +1 semitone ", fontcolor="#999999"]
+    start -> s_gs  [label=" -1 semitone ", fontcolor="#999999"]
+    start -> s_b   [label=" +2 semitones ", fontcolor="#3498db", color="#3498db", penwidth=3]
+    start -> s_g   [label=" -2 semitones ", fontcolor="#999999"]
+    start -> s_ds  [label=" +6 semitones ", fontcolor="#999999"]
 
     // Label for this level
     lbl1 [label="5 successor\npitch classes", shape=plaintext, fillcolor="transparent", fontcolor="#777777", fontsize=14, fontname="Helvetica-Oblique"]
 
     // --- Level 2: octave choices for B ---
+    // Ghost notes: dotted circles, no fill
     node [
-        shape=box
-        fillcolor="#34495e"
-        fontcolor="white"
+        shape=circle
+        fillcolor="transparent"
+        fontcolor="#888888"
         fontsize=14
-        width=0.6
-        height=0.4
-        fixedsize=false
-        style="filled,rounded"
+        width=0.65
+        fixedsize=true
+        style=dotted
+        color="#999999"
+        penwidth=2
     ]
 
     b3 [label="B3"]
-    b4 [label="B4"]
     b5 [label="B5"]
     b6 [label="B6"]
 
-    s_b -> b3
+    // B4 is the selected one: solid filled
+    b4 [label="B4", style=filled, fillcolor="#2c3e6b", fontcolor="white", color="#4a4a6a", penwidth=2]
+
+    s_b -> b3 [color="#bbbbbb"]
     s_b -> b4 [penwidth=3, color="#3498db"]
-    s_b -> b5
-    s_b -> b6
+    s_b -> b5 [color="#bbbbbb"]
+    s_b -> b6 [color="#bbbbbb"]
 
     // Ellipsis nodes for other branches
-    node [shape=plaintext, fillcolor="transparent", fontcolor="#999999", fontsize=20]
+    node [shape=plaintext, fillcolor="transparent", fontcolor="#999999", fontsize=20, style=""]
     dots_as [label="⋮"]
     dots_gs [label="⋮"]
     dots_g  [label="⋮"]
@@ -103,9 +108,12 @@ digraph branching {
         fontsize=16
         width=0.7
         fixedsize=true
+        style=filled
+        color="#4a4a6a"
+        penwidth=2
     ]
 
-    // B's successors: C(±1), A#(±1), C#(±2), A(±2, USED), F(±6)
+    // B's successors: C(+1), A#(-1), C#(+2), A(-2, USED), F(+6)
     n_c   [label="C"]
     n_as2 [label="A#"]
     n_cs  [label="C#"]
@@ -114,11 +122,11 @@ digraph branching {
     // A is already used — show it crossed out
     n_a_used [label="A ✗", fillcolor="#6b2c2c", fontcolor="#cc6666", fontsize=14]
 
-    b4 -> n_c    [label=" ±1 ", fontcolor="#e74c3c", color="#e74c3c"]
-    b4 -> n_as2  [label=" ±1 ", fontcolor="#e74c3c", color="#e74c3c"]
-    b4 -> n_cs   [label=" ±2 ", fontcolor="#3498db", color="#3498db"]
-    b4 -> n_a_used [label=" ±2 ", fontcolor="#cccccc", color="#cccccc", style=dotted]
-    b4 -> n_f    [label=" ±6 ", fontcolor="#2ecc71", color="#2ecc71", style=dashed]
+    b4 -> n_c    [label=" +1 semitone ", fontcolor="#999999"]
+    b4 -> n_as2  [label=" -1 semitone ", fontcolor="#999999"]
+    b4 -> n_cs   [label=" +2 semitones ", fontcolor="#999999"]
+    b4 -> n_a_used [label=" -2 semitones ", fontcolor="#cccccc", color="#cccccc", style=dotted]
+    b4 -> n_f    [label=" +6 semitones ", fontcolor="#999999"]
 
     // Label for this level
     lbl3 [label="4 unused successor\npitch classes remain", shape=plaintext, fillcolor="transparent", fontcolor="#777777", fontsize=14, fontname="Helvetica-Oblique"]
