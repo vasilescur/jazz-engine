@@ -557,6 +557,11 @@ The `angry_successor_pc/2` facts define a graph
       where each of the 12 pitch classes points to exactly 5 others.
 We need to count all orderings that visit every pitch class
       exactly once, following only the allowed edges.
+In graph theory, a path that visits every node exactly once
+      is called a *Hamiltonian path*
+      (named after the mathematician William Rowan Hamilton).
+So $S$ is the number of Hamiltonian paths in the
+      angry man pitch-class successor graph.
 
 This cannot be solved with a simple closed-form formula,
       because the structure of the graph matters:
