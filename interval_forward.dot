@@ -1,0 +1,59 @@
+digraph interval_forward {
+    rankdir=TB
+    bgcolor="transparent"
+    pad=0.2
+    nodesep=0
+    ranksep=0.05
+
+    node [fontname="Helvetica"]
+    edge [style=invis]
+
+    // Function call text
+    open [label=<<FONT FACE="Courier" POINT-SIZE="28" COLOR="#555555"><B>interval(</B></FONT>> shape=plaintext]
+    comma1 [label=<<FONT FACE="Courier" POINT-SIZE="28" COLOR="#555555"><B>,</B></FONT>> shape=plaintext]
+    comma2 [label=<<FONT FACE="Courier" POINT-SIZE="28" COLOR="#555555"><B>,</B></FONT>> shape=plaintext]
+    close [label=<<FONT FACE="Courier" POINT-SIZE="28" COLOR="#555555"><B>)</B></FONT>> shape=plaintext]
+
+    // Bound argument boxes (light gray)
+    first [
+        label=<<FONT POINT-SIZE="22" COLOR="#333333"><B>C4</B></FONT><BR ALIGN="LEFT"/><FONT POINT-SIZE="15" COLOR="#888888">First</FONT>>
+        shape=box style="filled,rounded"
+        fillcolor="#e0e0e0" color="#bbbbbb"
+        penwidth=2 margin="0.15,0.08"
+    ]
+
+    second [
+        label=<<FONT POINT-SIZE="22" COLOR="#333333"><B>E♭4</B></FONT><BR ALIGN="LEFT"/><FONT POINT-SIZE="15" COLOR="#888888">Second</FONT>>
+        shape=box style="filled,rounded"
+        fillcolor="#e0e0e0" color="#bbbbbb"
+        penwidth=2 margin="0.15,0.08"
+    ]
+
+    // Unbound argument box (accent blue, dotted)
+    semitones [
+        label=<<FONT POINT-SIZE="22" COLOR="#2c3e6b"><B>3</B></FONT><BR ALIGN="LEFT"/><FONT POINT-SIZE="15" COLOR="#6688bb">Semitones</FONT>>
+        shape=box style="filled,rounded,dotted"
+        fillcolor="#b8d4f0" color="#7a9fd4"
+        penwidth=2 margin="0.15,0.08"
+    ]
+
+    // Brace below computed argument
+    brace [shape=none margin=0 label=<
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+        <TR>
+            <TD WIDTH="42" HEIGHT="8" SIDES="RB" BORDER="2" COLOR="#7a9fd4"></TD>
+            <TD WIDTH="42" HEIGHT="8" SIDES="LB" BORDER="2" COLOR="#7a9fd4"></TD>
+        </TR>
+        <TR><TD COLSPAN="2" CELLPADDING="4"><FONT POINT-SIZE="14" COLOR="#7a9fd4"><I>computed</I></FONT></TD></TR>
+        </TABLE>
+    >]
+
+    // Force main elements to same rank
+    { rank=same; open; first; comma1; second; comma2; semitones; close; }
+
+    // Ordering within rank
+    open -> first -> comma1 -> second -> comma2 -> semitones -> close
+
+    // Position brace below computed argument
+    semitones -> brace
+}

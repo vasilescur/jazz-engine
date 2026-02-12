@@ -1,6 +1,6 @@
 # jazz-engine
 
-Prolog implementation of music theory &amp; jazz guitar.
+Prolog implementation of music theory & jazz guitar.
 
 
 ## Usage
@@ -61,6 +61,10 @@ Semitones = 3,
 IntervalName = minor_third.
 ```
 
+<p align="center">
+<img src="interval_forward_v2.png" />
+</p>
+
 **Example: Using `interval/3` to find the note a given distance away**
 
 Query:
@@ -73,6 +77,10 @@ Root = note{accidental:natural, name:c, octave:4},
 Semitones = 3,
 SecondNote = note{accidental:sharp, name:d, octave:4}.
 ```
+
+<p align="center">
+<img src="interval_backward_v2.png" />
+</p>
 
 ### Scales
 
@@ -234,7 +242,7 @@ Chords = [
 ].
 ```
 
-### The Angry Man
+# The Angry Man
 
 <img src="https://stevedukes.com/wp-content/uploads/2021/08/pict4.jpeg" />
 
@@ -296,7 +304,7 @@ Some of The Angry Man predicates do not work as expected for rows longer than 5 
 This is a known issue and work-in-progress.
 </bold>
 
-#### The Angry Man: Analysis
+### The Angry Man: Analysis
 
 Let's dive into the numbers.
 
@@ -367,7 +375,7 @@ So, the probability of a given note being a valid interval away from another
       note is about $19/45 \approx 41.7\%$.
 
 <p align="center">
-<img src="angry_man_branching.png" width="550" />
+<img src="angry_man_branching_v3.png" width="100%" />
 </p>
 
 Assuming an even distribution of tones in the guitar's range,
@@ -422,9 +430,9 @@ To get past this assumption, we need a different strategy —
       connect to which, rather than averaging over all possibilities.
 It turns out the code already encodes everything we need.
 
-#### The Angry Man: Exact Count
+### The Angry Man: Exact Count
 
-##### Separating pitch classes from octaves
+#### Separating pitch classes from octaves
 
 A key insight emerges from the code structure.
 The `angry_man_build` predicate checks two independent things
@@ -436,6 +444,20 @@ The `angry_man_build` predicate checks two independent things
 2. **Uniqueness constraint**: each pitch class (name + accidental)
       must appear at most once
       (checked via `\+ member(Name-Acc, UsedTones)`)
+
+```prolog
+angry_man_candidate(PrevNote, NextNote) :-
+    PrevNote = note{name: PrevName, accidental: PrevAcc, octave: _},  % octave ignored
+    note_pitch_class(PrevName, PrevAcc, PrevPC),
+    angry_successor_pc(PrevPC, NextPC),   % (1) pitch-class constraint
+    guitar_note_by_pc(NextPC, NextNote).
+
+angry_man_build([Note|Rest], just(Prev), UsedTones) :-
+    angry_man_candidate(Prev, Note),
+    Note = note{name: Name, accidental: Acc, octave: _},
+    \+ member(Name-Acc, UsedTones),  % (2) uniqueness (octave also ignored)
+    angry_man_build(Rest, just(Note), [Name-Acc|UsedTones]).
+```
 
 Critically, **neither constraint involves octave**.
 The octave of each note is a completely free choice —
@@ -455,7 +477,7 @@ where $S$ is the number of ways to order the 12 pitch classes
       following the successor rules (ignoring octave entirely),
 and $O$ is the number of ways to assign octaves to each pitch class.
 
-##### Computing $O$: octave combinations
+#### Computing $O$: octave combinations
 
 Since every tone row uses all 12 pitch classes exactly once,
       the octave choice for each pitch class is independent.
@@ -494,7 +516,7 @@ Note that the geometric mean of octaves per pitch class
       is $\sqrt[12]{O} = \sqrt[12]{7{,}077{,}888} \approx 3.72$,
       very close to the original estimate's assumed average of $45/12 = 3.75$.
 
-##### Computing $S$: valid pitch-class sequences
+#### Computing $S$: valid pitch-class sequences
 
 $S$ is the number of ways to arrange all 12 pitch classes into a sequence
       such that every consecutive pair is connected by an angry man interval.
@@ -505,6 +527,7 @@ The `angry_successor_pc/2` facts define a graph
 <p align="center">
 <img src="angry_man_successor_graph.png" width="450" />
 </p>
+
 We need to count all orderings that visit every pitch class
       exactly once, following only the allowed edges.
 In graph theory, a path that visits every node exactly once
@@ -536,7 +559,7 @@ H = 90144.
 
 There are exactly **90,144** valid orderings of the 12 pitch classes.
 
-##### The exact answer
+#### The exact answer
 
 Combining the two independent factors:
 
@@ -554,7 +577,7 @@ $$
 There are about **638 billion** possible Angry Man tone rows on the Martin DC-45 —
       roughly 650 times fewer than the earlier estimate of 415 trillion.
 
-##### Where the estimate went wrong
+#### Where the estimate went wrong
 
 The dominant source of error is the "5 up and 5 down" assumption,
       which doubled the number of successor pitch classes at every step.
@@ -580,7 +603,7 @@ In reality, the graph structure introduces correlations —
       or thin out in ways that a uniform probability model can't capture.
 The exact computation accounts for all of these structural effects automatically.
 
-##### Running the verification
+#### Running the verification
 
 The full computation can be reproduced by running:
 
@@ -594,7 +617,7 @@ This uses the `angry_successor_pc/2` and `guitar_note_by_pc/2` facts
       against an independent direct computation as a cross-check,
       and compares both against the original estimate.
 
-#### Example Angry Man Tone Row Generation
+### Example Angry Man Tone Row Generation
 
 Users can repeatedly call `angry_man_next_note/2` to build an Angry Man tone row
 incrementally, choosing each note from a list of possible options.
