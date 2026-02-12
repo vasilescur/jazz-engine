@@ -255,9 +255,7 @@ Chords = [
 </p>
 
 <p align="center">
-<video controls src="chord_progression_I_vi_ii_V_G.mp4" width="200">
-  <a href="chord_progression_I_vi_ii_V_G.mp4">Play chord progression</a>
-</video>
+<a href="chord_progression_I_vi_ii_V_G.mp4?raw=true">Listen to chord progression</a>
 </p>
 
 # The Angry Man
