@@ -442,9 +442,9 @@ This means the total count factors cleanly into two independent parts:
 
 $$
 \text{Angry Man rows}
-= \underbrace{~ S ~}\_{\text{Valid pitch-class sequences}}
+= \underbrace{~~~ S ~~~}\_{\text{Valid pitch-class sequences}}
 \times
-\underbrace{~ O ~}\_{\text{Octave combinations}}
+\underbrace{~~~ O ~~~}\_{\text{Octave combinations}}
 $$
 
 where $S$ is the number of ways to order the 12 pitch classes
