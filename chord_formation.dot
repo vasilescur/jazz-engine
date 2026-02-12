@@ -37,21 +37,33 @@ digraph chord_formation {
         penwidth=2 margin="0.15,0.08"
     ]
 
-    { rank=same; root; pattern; degrees; adjustments; }
+    // Force left-to-right ordering in top row
+    { rank=same; root -> pattern -> degrees -> adjustments [style=invis]; }
 
-    // --- Row 2: Generated scale ---
+    // --- Row 2: Generated scale with brace above ---
     scale [
         shape=none margin=0
         label=<
-        <TABLE BORDER="0" CELLBORDER="2" CELLSPACING="0" CELLPADDING="8">
+        <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
         <TR>
-            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">1</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>C</B></FONT></TD>
-            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">2</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">D</FONT></TD>
-            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">3</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>E♭</B></FONT></TD>
-            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">4</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">F</FONT></TD>
-            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">5</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>G</B></FONT></TD>
-            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">6</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">A♭</FONT></TD>
-            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">7</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">B♭</FONT></TD>
+            <TD COLSPAN="7">
+                <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+                <TR>
+                    <TD PORT="brace" WIDTH="230" HEIGHT="8" SIDES="RB" BORDER="2" COLOR="#999999"></TD>
+                    <TD WIDTH="230" HEIGHT="8" SIDES="LB" BORDER="2" COLOR="#999999"></TD>
+                </TR>
+                </TABLE>
+            </TD>
+        </TR>
+        <TR><TD COLSPAN="7" HEIGHT="6"></TD></TR>
+        <TR>
+            <TD PORT="c" WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" BORDER="2" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">1</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>C</B></FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" BORDER="2" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">2</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">D</FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" BORDER="2" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">3</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>E♭</B></FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" BORDER="2" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">4</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">F</FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" BORDER="2" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">5</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>G</B></FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" BORDER="2" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">6</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">A♭</FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" BORDER="2" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">7</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">B♭</FONT></TD>
         </TR>
         </TABLE>
         >
@@ -101,8 +113,8 @@ digraph chord_formation {
     ]
 
     // --- Edges ---
-    root -> scale [color="#999999" penwidth=1.5]
-    pattern -> scale [color="#999999" penwidth=1.5]
+    root -> scale:c [color="#999999" penwidth=1.5]
+    pattern -> scale:brace [color="#999999" penwidth=1.5]
 
     degrees -> selected [color="#7a9fd4" penwidth=1.5]
     scale -> selected [color="#7a9fd4" penwidth=1.5]
