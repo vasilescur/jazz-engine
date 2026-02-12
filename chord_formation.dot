@@ -49,8 +49,9 @@ digraph chord_formation {
             <TD COLSPAN="7">
                 <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
                 <TR>
-                    <TD PORT="brace" WIDTH="230" HEIGHT="8" SIDES="RB" BORDER="2" COLOR="#999999"></TD>
-                    <TD WIDTH="230" HEIGHT="8" SIDES="LB" BORDER="2" COLOR="#999999"></TD>
+                    <TD WIDTH="229" HEIGHT="8" SIDES="RB" BORDER="2" COLOR="#999999"></TD>
+                    <TD PORT="brace" WIDTH="2" HEIGHT="8"></TD>
+                    <TD WIDTH="229" HEIGHT="8" SIDES="LB" BORDER="2" COLOR="#999999"></TD>
                 </TR>
                 </TABLE>
             </TD>
