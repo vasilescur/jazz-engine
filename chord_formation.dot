@@ -45,13 +45,13 @@ digraph chord_formation {
         label=<
         <TABLE BORDER="0" CELLBORDER="2" CELLSPACING="0" CELLPADDING="8">
         <TR>
-            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">1</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>C</B></FONT></TD>
-            <TD BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">2</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">D</FONT></TD>
-            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">3</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>E♭</B></FONT></TD>
-            <TD BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">4</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">F</FONT></TD>
-            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">5</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>G</B></FONT></TD>
-            <TD BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">6</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">A♭</FONT></TD>
-            <TD BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">7</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">B♭</FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">1</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>C</B></FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">2</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">D</FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">3</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>E♭</B></FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">4</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">F</FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="12" COLOR="#6688bb">5</FONT><BR/><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>G</B></FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">6</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">A♭</FONT></TD>
+            <TD WIDTH="65" HEIGHT="50" FIXEDSIZE="TRUE" BGCOLOR="#f0f0f0" COLOR="#cccccc"><FONT POINT-SIZE="12" COLOR="#aaaaaa">7</FONT><BR/><FONT POINT-SIZE="20" COLOR="#999999">B♭</FONT></TD>
         </TR>
         </TABLE>
         >
@@ -68,9 +68,9 @@ digraph chord_formation {
         label=<
         <TABLE BORDER="0" CELLBORDER="2" CELLSPACING="12" CELLPADDING="8">
         <TR>
-            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>C</B></FONT></TD>
-            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>E♭</B></FONT></TD>
-            <TD BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>G</B></FONT></TD>
+            <TD WIDTH="65" HEIGHT="45" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>C</B></FONT></TD>
+            <TD WIDTH="65" HEIGHT="45" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>E♭</B></FONT></TD>
+            <TD WIDTH="65" HEIGHT="45" FIXEDSIZE="TRUE" BGCOLOR="#b8d4f0" COLOR="#7a9fd4"><FONT POINT-SIZE="20" COLOR="#2c3e6b"><B>G</B></FONT></TD>
         </TR>
         </TABLE>
         >
@@ -87,9 +87,9 @@ digraph chord_formation {
         label=<
         <TABLE BORDER="0" CELLBORDER="2" CELLSPACING="12" CELLPADDING="8" STYLE="rounded">
         <TR>
-            <TD BGCOLOR="#d4eab8" COLOR="#7aaa5a"><FONT POINT-SIZE="20" COLOR="#3a6b2c"><B>C</B></FONT><BR/><FONT POINT-SIZE="12" COLOR="#6a9b5a">♮</FONT></TD>
-            <TD BGCOLOR="#d4eab8" COLOR="#7aaa5a"><FONT POINT-SIZE="20" COLOR="#3a6b2c"><B>E♭</B></FONT><BR/><FONT POINT-SIZE="12" COLOR="#6a9b5a">♮</FONT></TD>
-            <TD BGCOLOR="#d4eab8" COLOR="#7aaa5a"><FONT POINT-SIZE="20" COLOR="#3a6b2c"><B>G♭</B></FONT><BR/><FONT POINT-SIZE="12" COLOR="#6a9b5a">♭</FONT></TD>
+            <TD WIDTH="65" HEIGHT="55" FIXEDSIZE="TRUE" BGCOLOR="#d4eab8" COLOR="#7aaa5a"><FONT POINT-SIZE="20" COLOR="#3a6b2c"><B>C</B></FONT><BR/><FONT POINT-SIZE="12" COLOR="#6a9b5a">♮</FONT></TD>
+            <TD WIDTH="65" HEIGHT="55" FIXEDSIZE="TRUE" BGCOLOR="#d4eab8" COLOR="#7aaa5a"><FONT POINT-SIZE="20" COLOR="#3a6b2c"><B>E♭</B></FONT><BR/><FONT POINT-SIZE="12" COLOR="#6a9b5a">♮</FONT></TD>
+            <TD WIDTH="65" HEIGHT="55" FIXEDSIZE="TRUE" BGCOLOR="#d4eab8" COLOR="#7aaa5a"><FONT POINT-SIZE="20" COLOR="#3a6b2c"><B>G♭</B></FONT><BR/><FONT POINT-SIZE="12" COLOR="#6a9b5a">♭</FONT></TD>
         </TR>
         </TABLE>
         >

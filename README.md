@@ -164,7 +164,7 @@ chord{root: _, pattern: <major pattern>, degrees: [1, 3, 5], adjustments: [natur
 ```
 
 <p align="center">
-<img src="chord_formation.png" width="500" />
+<img src="chord_formation_v2.png" />
 </p>
 
 #### Available Chord Shortcuts:
